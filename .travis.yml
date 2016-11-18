@@ -19,6 +19,8 @@ addons:
     packages:
       - google-chrome-stable
 install:
+  - bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/dd-agent/master/packaging/datadog-agent/source/install_agent.sh)"
+
   - export DISPLAY=':99'
   - Xvfb :99 -screen 0 1280x1024x16 +extension RANDR > /dev/null 2>&1 &
 
