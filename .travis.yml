@@ -11,10 +11,13 @@ php:
   # aliased to a recent hhvm version
   - hhvm
 env:
-  - SELENIUM="http://selenium-release.storage.googleapis.com/3.0-beta3/selenium-server-standalone-3.0.0-beta3.jar" CHROMEDRIVER="http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux64.zip"
-  - SELENIUM="http://selenium-release.storage.googleapis.com/3.0/selenium-server-standalone-3.0.1.jar" CHROMEDRIVER="http://chromedriver.storage.googleapis.com/LATEST_RELEASE"
-  - SELENIUM="http://selenium-release.storage.googleapis.com/3.0/selenium-server-standalone-3.0.1.jar" CHROMEDRIVER="http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux64.zip"
-
+  global:
+    - SELENIUM="http://selenium-release.storage.googleapis.com/3.0-beta3/selenium-server-standalone-3.0.0-beta3.jar"
+    - SELENIUM="http://selenium-release.storage.googleapis.com/3.0/selenium-server-standalone-3.0.1.jar"
+  matrix:
+    - USE_NETWORK=true
+    - CHROMEDRIVER="http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux64.zip"
+    - CHROMEDRIVER="http://chromedriver.storage.googleapis.com/LATEST_RELEASE"
 
 addons:
   apt:
