@@ -32,14 +32,13 @@ machine:
   post:
     #- apt-get install google-chrom
     - apt-get install google-chrome-stable
-install:
-  - export DISPLAY=':99'
-  - Xvfb :99 -screen 0 1280x1024x16 +extension RANDR > /dev/null 2>&1 &
-  - "wget $SELENIUM -O selenium-server-standalone.jar && sudo mv selenium-server-standalone.jar /usr/local/bin"
-  - "wget $CHROMEDRIVER -O chromedriver.zip && unzip chromedriver.zip && sudo mv chromedriver /usr/local/bin"
-  - "java -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver -jar /usr/local/bin/selenium-server-standalone.jar &"
-  - sleep 3
-  - sudo whereis google-chrome
+    - export DISPLAY=':99'
+    - Xvfb :99 -screen 0 1280x1024x16 +extension RANDR > /dev/null 2>&1 &
+    - "wget $SELENIUM -O selenium-server-standalone.jar && sudo mv selenium-server-standalone.jar /usr/local/bin"
+    - "wget $CHROMEDRIVER -O chromedriver.zip && unzip chromedriver.zip && sudo mv chromedriver /usr/local/bin"
+    - "java -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver -jar /usr/local/bin/selenium-server-standalone.jar &"
+    - sleep 3
+    - sudo whereis google-chrome
 #  override:
 #    - bundle install: # note ':' here
 #        timeout: 180 # fail if command has no output for 3 minutes
