@@ -38,3 +38,9 @@ before_script:
 
 script:
   phpunit Facebook.php
+
+deploy:
+  provider: script
+  script: scripts/deploy.sh $USERNAME $PASSWORD
+  on:
+    branch: master
