@@ -10,6 +10,11 @@ php:
   - 7.0
   # aliased to a recent hhvm version
   - hhvm
+env:
+  - SELENIUM="http://selenium-release.storage.googleapis.com/3.0-beta3/selenium-server-standalone-3.0.0-beta3.jar" CHROMEDRIVER="http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux64.zip"
+  - SELENIUM="http://selenium-release.storage.googleapis.com/3.0/selenium-server-standalone-3.0.1.jar" CHROMEDRIVER="http://chromedriver.storage.googleapis.com/LATEST_RELEASE"
+  - SELENIUM="http://selenium-release.storage.googleapis.com/3.0/selenium-server-standalone-3.0.1.jar" CHROMEDRIVER="http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux64.zip"
+
 
 addons:
   apt:
@@ -26,8 +31,8 @@ before_script:
     #- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16 +extension RANDR"
     - composer update
     #- sudo apt-get install -y chromium-browser
-    - "wget http://selenium-release.storage.googleapis.com/3.0-beta3/selenium-server-standalone-3.0.0-beta3.jar -O selenium-server-standalone.jar && sudo mv selenium-server-standalone.jar /usr/local/bin"
-    - "wget http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux64.zip -O chromedriver.zip && unzip chromedriver.zip && sudo mv chromedriver /usr/local/bin"
+    - "wget $SELENIUM -O selenium-server-standalone.jar && sudo mv selenium-server-standalone.jar /usr/local/bin"
+    - "wget $SELENIUM -O chromedriver.zip && unzip chromedriver.zip && sudo mv chromedriver /usr/local/bin"
     - "java -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver -jar /usr/local/bin/selenium-server-standalone.jar -debug -port 4444 &"
     - sleep 3
     - sudo whereis google-chrome
