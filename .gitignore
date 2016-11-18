@@ -1,0 +1,17 @@
+profiles/
+npm-debug.log
+node_modules
+*.tar.bz2
+*.deb
+browser-tmp/
+browsers/
+
+/build
+/vendor
+.project
+.vagrant/
+
+.settings/
+
+.buildpath
+*.phar
